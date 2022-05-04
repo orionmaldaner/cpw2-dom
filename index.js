@@ -9,15 +9,20 @@ function background(){
      * Desenvolva uma função capaz de trocar a cor do fundo da página, ou seja,
      * alterar o background do body para a cor #BECCC3.
      */
-
+    document.body.style.backgroundColor = '#BECCC3';
 }
-
 /**
  * Recupera os valores dos campos de texto cujo o id='fname' e id='lname'
  * e apresente o nome e o sobrenome de uma pessoa (separado por um espaço)
  * na div id='result'
  */
 function show(){
+
+    let name = document.getElementById('fname').value;
+    let lastName = document.getElementById('lname').value;
+
+    document.getElementById('result').innerHTML = name + " " + lastName ;
+    
 
      /**
       * Issue  2
@@ -34,6 +39,18 @@ function show(){
 function search(){
 
     var data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
+
+    let getName = document.getElementById('name').value;
+    let searchDiv = document.getElementById('search');
+    let texto = '';
+
+    data.forEach(person => {
+        if(person.name.toUpperCase().substr(0, getName.length).indexOf(`${getName.toUpperCase()}`) > -1) {
+            texto += `<div>${person.name}</div>`;
+        }
+    });
+    searchDiv.innerHTML = texto;
+}
 
     /**
      * Issue 3
@@ -52,7 +69,7 @@ function search(){
      * Além disso, a função removeAllChildren abaixo também pode ser útil para o desenvolvimento da solução
      */
 
-}
+
 
 /**
  * Remove todos os filhos de um nó
